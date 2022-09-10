@@ -176,6 +176,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     pirated_logo_controller.forward();
   }
 
+  bool _isShowProductMenu = false;
+
+
+
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -315,6 +320,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           ),
                         ),
                       ),
+
+
+                      //Home feature product
                       SliverList(
                         delegate: SliverChildListDelegate([
                           Padding(
@@ -340,7 +348,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 Padding(
                                   padding: const EdgeInsets.fromLTRB(
                                     4.0,
-                                    16.0,
+                                    0.0,
                                     8.0,
                                     0.0,
                                   ),
@@ -349,11 +357,260 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                               ],
                             ),
                           ),
+
+                        ]),
+                      ),
+
+
+                      //Home  product section 1
+                      SliverList(
+                        delegate: SliverChildListDelegate([
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(
+                              16.0,
+                              16.0,
+                              16.0,
+                              0.0,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Product For You",
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    InkWell(
+                                      onTap: ()=>{
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      return CategoryProducts(
+                                      category_id: _featuredCategoryList[0].id,
+                                      category_name: _featuredCategoryList[0].name,
+                                      );
+                                      }))
+
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10),
+                                            color: MyTheme.accent_color
+                                        ),
+                                        child: Text(
+                                          "View All",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                           Container(
-                            height: 80,
+                            width: MediaQuery.of(context).size.width,
+                            height: 300,
+                            margin: EdgeInsets.only(left: 18, right: 20, top: 10),
+                            child: ListView.builder(
+                              itemCount: 4,
+                              itemBuilder: (_, index){
+                                return InkWell(
+                                  onLongPress: ()=>setState(()=>_isShowProductMenu = true),
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width/2.4,
+                                    child: ProductCard(
+                                        id: _featuredProductList[index].id,
+                                        image: _featuredProductList[index].thumbnail_image,
+                                        name: _featuredProductList[index].name,
+                                        main_price: _featuredProductList[index].main_price,
+                                        stroked_price: _featuredProductList[index].stroked_price,
+                                        has_discount: _featuredProductList[index].has_discount),
+                                  ),
+                                );
+                              },
+                              scrollDirection: Axis.horizontal,
+
+                            ),
+                          ),
+
+
+                          Container(
+                            height: 30,
                           )
                         ]),
                       ),
+                      //Home  product section 2
+                      SliverList(
+                        delegate: SliverChildListDelegate([
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, right: 16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "New Products",
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    InkWell(
+                                      onTap: ()=>{
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                          return CategoryProducts(
+                                            category_id: _featuredCategoryList[0].id,
+                                            category_name: _featuredCategoryList[0].name,
+                                          );
+                                        }))
+
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10),
+                                            color: MyTheme.accent_color
+                                        ),
+                                        child: Text(
+                                          "View All",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 300,
+                            margin: EdgeInsets.only(left: 18, right: 20, top: 10),
+                            child: ListView.builder(
+                              itemCount: 4,
+                              itemBuilder: (_, index){
+                                return InkWell(
+                                  onLongPress: ()=>setState(()=>_isShowProductMenu = true),
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width/2.4,
+                                    child: ProductCard(
+                                        id: _featuredProductList[index].id,
+                                        image: _featuredProductList[index].thumbnail_image,
+                                        name: _featuredProductList[index].name,
+                                        main_price: _featuredProductList[index].main_price,
+                                        stroked_price: _featuredProductList[index].stroked_price,
+                                        has_discount: _featuredProductList[index].has_discount),
+                                  ),
+                                );
+                              },
+                              scrollDirection: Axis.horizontal,
+
+                            ),
+                          ),
+                          Container(
+                            height: 30,
+                          )
+                        ]),
+                      ),
+                      //Home  product section Free Shipping
+                      SliverList(
+                        delegate: SliverChildListDelegate([
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(
+                              16.0,
+                              0.0,
+                              16.0,
+                              0.0,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Free Shipping",
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    InkWell(
+                                      onTap: ()=>{
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                          return CategoryProducts(
+                                            category_id: _featuredCategoryList[0].id,
+                                            category_name: _featuredCategoryList[0].name,
+                                          );
+                                        }))
+
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10),
+                                            color: MyTheme.accent_color
+                                        ),
+                                        child: Text(
+                                          "View All",
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 300,
+                            margin: EdgeInsets.only(left: 18, right: 20, top: 10),
+                            child: ListView.builder(
+                              itemCount: 4,
+                              itemBuilder: (_, index){
+                                return InkWell(
+                                  onLongPress: ()=>setState(()=>_isShowProductMenu = true),
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width/2.4,
+                                    child: ProductCard(
+                                        id: _featuredProductList[index].id,
+                                        image: _featuredProductList[index].thumbnail_image,
+                                        name: _featuredProductList[index].name,
+                                        main_price: _featuredProductList[index].main_price,
+                                        stroked_price: _featuredProductList[index].stroked_price,
+                                        has_discount: _featuredProductList[index].has_discount),
+                                  ),
+                                );
+                              },
+                              scrollDirection: Axis.horizontal,
+
+                            ),
+                          ),
+
+
+                          Container(
+                            height: 30,
+                          )
+                        ]),
+                      ),
+
+
+
+
+
+
+
                     ],
                   ),
                 ),
@@ -528,7 +785,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           Border.all(color: MyTheme.light_grey, width: 1)),
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: Image.asset("assets/app_logo.png"),
+                        child: Image.asset("assets/bl.png"),
                       )),
                   Padding(
                     padding: const EdgeInsets.only(top: 8),

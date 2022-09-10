@@ -88,8 +88,14 @@ class _MainState extends State<Main> {
               tooltip: "start FAB",
               child: Container(
                   margin: EdgeInsets.all(0.0),
+                 decoration: BoxDecoration(
+                   color: MyTheme.accent_color,
+                   borderRadius: BorderRadius.circular(100)
+                 ),
                   child: IconButton(
-                      icon: new Image.asset('assets/square_logo.png'),
+                      icon: Icon(
+                        Icons.shopping_basket
+                      ),
                       tooltip: 'Action',
                       onPressed: () {
                         Navigator.push(context,

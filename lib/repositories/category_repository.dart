@@ -22,7 +22,8 @@ class CategoryRepository {
         await http.get(url,headers: {
           "App-Language": app_language.$,
         });
-    //print(response.body.toString());
+    print(AppConfig.BASE_URL);
+    print(response.body.toString());
     //print("--featured cat--");
     return categoryResponseFromJson(response.body);
   }

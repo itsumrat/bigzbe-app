@@ -151,12 +151,12 @@ class _RegistrationState extends State<Registration> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 40.0, bottom: 15),
+                    padding: const EdgeInsets.only(top: 40.0, bottom: 0),
                     child: Container(
-                      width: 75,
-                      height: 75,
+                      width: 140,
+                      height: 60,
                       child: Image.asset(
-                          'assets/app_logo.png'),
+                          'assets/logo.png', fit: BoxFit.contain,),
                     ),
                   ),
                   Padding(

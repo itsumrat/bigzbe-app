@@ -63,7 +63,7 @@ class _SplashState extends State<Splash> {
       //navigateAfterFuture: loadFromFuture(), //uncomment this
       title: Text(
         // "V " + _packageInfo.version,
-        'Bigzbe',
+        '',
         style: TextStyle(
             fontWeight: FontWeight.w400, fontSize: 24.0, color: Colors.black),
       ),
@@ -76,7 +76,7 @@ class _SplashState extends State<Splash> {
           color: Colors.white,
         ),
       ),
-      image: Image.asset("assets/app_logo.png"),
+      image: Image.asset("assets/app_logo.png", height: 60, width:  140,),
       backgroundImage:
           Image.asset("assets/splash_login_registration_background_image.png"),
       backgroundColor: MyTheme.splash_screen_color,

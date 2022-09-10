@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:active_ecommerce_flutter/data_model/BigzbeShopList.dart';
+import 'package:active_ecommerce_flutter/screens/bigzloot-single.dart';
 import 'package:http/http.dart' as http;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -93,84 +94,87 @@ class _BigzlootState extends State<Bigzloot> {
                   return ListView.builder(
                     itemCount: snapshot.data.length,
                       itemBuilder: (_, index){
-                        return Container(
-                          margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                          padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                image: AssetImage("assets/placeholder-rect.jpg"),
-                                fit: BoxFit.cover,
-                              )
-                          ),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                top: 0,
-                                right: 0,
-                                child: Container(
-                                  //   alignment: Alignment.topRight,
-                                  padding: EdgeInsets.only(left:10, right:10, top:5, bottom:5),
-                                  decoration: BoxDecoration(
-                                    borderRadius:  BorderRadius.circular(100),
-                                    color: Colors.white70,
-                                  ),
-                                  child:  Text("${snapshot.data[index]["shop_category"]}",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey
-                                    ),
-                                  ),
-                                ),),
-
-                              Row(
-                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                                children: [
-                                  Container(
-                                    width: 100,
-                                    height: 100,
+                        return InkWell(
+                          onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SingleBigzloot(id: snapshot.data[index]["id"].toString(),))),
+                          child: Container(
+                            margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                            padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                  image: AssetImage("assets/placeholder-rect.jpg"),
+                                  fit: BoxFit.cover,
+                                )
+                            ),
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  top: 0,
+                                  right: 0,
+                                  child: Container(
+                                    //   alignment: Alignment.topRight,
+                                    padding: EdgeInsets.only(left:10, right:10, top:5, bottom:5),
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(500),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            spreadRadius: 5,
-                                            blurRadius: 7,
-                                            offset: Offset(0, 3), // changes position of shadow
-                                          ),
-                                        ],
-                                        image: DecorationImage(
-                                          image: AssetImage("assets/placeholder-rect.jpg"),
-                                          fit: BoxFit.cover,
-                                        )
+                                      borderRadius:  BorderRadius.circular(100),
+                                      color: Colors.white70,
+                                    ),
+                                    child:  Text("${snapshot.data[index]["shop_category"]}",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey
+                                      ),
+                                    ),
+                                  ),),
+
+                                Row(
+                                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                  children: [
+                                    Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(500),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.grey.withOpacity(0.5),
+                                              spreadRadius: 5,
+                                              blurRadius: 7,
+                                              offset: Offset(0, 3), // changes position of shadow
+                                            ),
+                                          ],
+                                          image: DecorationImage(
+                                            image: AssetImage("assets/placeholder-rect.jpg"),
+                                            fit: BoxFit.cover,
+                                          )
+                                      ),
+
                                     ),
 
-                                  ),
-
-                                  SizedBox(width: 30,),
-                                  Column(
-                                    children: [
-                                      Text("${snapshot.data[index]["name"]}",
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
+                                    SizedBox(width: 30,),
+                                    Column(
+                                      children: [
+                                        Text("${snapshot.data[index]["name"]}",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ),
-                                      Text("${snapshot.data[index]["address"]}",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                        Text("${snapshot.data[index]["address"]}",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                        )
+                                      ],
+                                    ),
 
 
 
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       }

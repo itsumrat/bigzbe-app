@@ -20,12 +20,12 @@ class AppConfig {
 
   //configure this
   // static const DOMAIN_PATH = "192.168.1.112/ecommerce"; //localhost
-  static const DOMAIN_PATH = "https://thepricecafe.com"; //inside a folder
+  static const DOMAIN_PATH = "bigzbe.com"; //inside a folder
   //static const DOMAIN_PATH = "mydomain.com"; // directly inside the public folder
 
   //do not configure these below
   static const String API_ENDPATH = "api/v2";
   static const String PROTOCOL = HTTPS ? "https://" : "http://";
   static const String RAW_BASE_URL = "${PROTOCOL}${DOMAIN_PATH}";
-  static const String BASE_URL = "${RAW_BASE_URL}/${API_ENDPATH}";
+  static const String BASE_URL = "${RAW_BASE_URL}/${API_ENDPATH}";//"https://bigzbe.com/api/v2";
 }

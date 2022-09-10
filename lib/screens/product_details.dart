@@ -1018,7 +1018,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             MaterialPageRoute(builder: (context) {
                           return CommonWebviewScreen(
                             url:
-                                "${AppConfig.RAW_BASE_URL}/mobile-page/seller-policy",
+                                "${AppConfig.BASE_URL}/mobile-page/seller-policy",
                             page_name: AppLocalizations.of(context).product_details_screen_seller_policy,
                           );
                         }));
@@ -1061,7 +1061,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             MaterialPageRoute(builder: (context) {
                           return CommonWebviewScreen(
                             url:
-                                "${AppConfig.RAW_BASE_URL}/mobile-page/return-policy",
+                                "${AppConfig.BASE_URL}/mobile-page/return-policy",
                             page_name: AppLocalizations.of(context).product_details_screen_return_policy,
                           );
                         }));
@@ -1104,7 +1104,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             MaterialPageRoute(builder: (context) {
                           return CommonWebviewScreen(
                             url:
-                                "${AppConfig.RAW_BASE_URL}/mobile-page/support-policy",
+                                "${AppConfig.BASE_URL}/mobile-page/support-policy",
                             page_name: AppLocalizations.of(context).product_details_screen_support_policy,
                           );
                         }));
